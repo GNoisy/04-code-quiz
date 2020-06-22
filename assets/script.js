@@ -1,9 +1,13 @@
 //present user start button if they want to start quiz
 
-//if user clicks start - start timer of game clock
+//if user clicks start - start quiz and timer
+
+//render questions for user to answer
+
+//check user answers for true or false, save responses, deduct time if applicable
 
 //create list of questions for the user to answer
-var questions = [
+var userQuestions = [
     {
         question: "JavaScript currently has this many number of variable declarations?",
         choices: {
@@ -56,4 +60,14 @@ var questions = [
     },
 
 ];
+
+//check user answers for true or false, save responses, deduct time if applicable
+
+//if all questions are answered or time runs out - game over
+
+//user is presented score and is prompted to enter name
+
+//user info is stored in highscores
+
+
 
