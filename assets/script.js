@@ -1,3 +1,6 @@
+var jsQuizDiv = document.querySelector("#js-quiz");
+var startBtn = document.querySelector("#start-button");
+var quesCont = document.querySelector("#questions-container");
 //present user start button if they want to start quiz
 
 //if user clicks start - start quiz and timer
@@ -7,6 +10,11 @@
 //check user answers for true or false, save responses, deduct time if applicable
 
 //create list of questions for the user to answer
+// if (userQuestions[0].choices.b === userQuestions[0].answer) {
+//     //run this code
+// }
+
+
 var userQuestions = [
     {
         question: "JavaScript currently has this many number of variable declarations?",
@@ -60,6 +68,10 @@ var userQuestions = [
     },
 
 ];
+
+// document.querySelector("#js-quiz").addEventListener("click", function() {
+
+// })
 
 //check user answers for true or false, save responses, deduct time if applicable
 
