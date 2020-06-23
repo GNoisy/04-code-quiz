@@ -1,19 +1,13 @@
 var jsQuizDiv = document.querySelector("#js-quiz");
 var startBtn = document.querySelector("#start-button");
 var quesCont = document.querySelector("#questions-container");
+var timer =document.querySelector("#timer-count");
 //present user start button if they want to start quiz
-
-//if user clicks start - start quiz and timer
-
-//render questions for user to answer
-
-//check user answers for true or false, save responses, deduct time if applicable
 
 //create list of questions for the user to answer
 // if (userQuestions[0].choices.b === userQuestions[0].answer) {
 //     //run this code
 // }
-
 
 var userQuestions = [
     {
@@ -68,6 +62,17 @@ var userQuestions = [
     },
 
 ];
+
+//if user clicks start - start quiz and timer
+
+//render questions for user to answer
+function renderQuestion (arrObj) {
+    for (var i=0; i < arrObj.length; i++) {
+        
+    }
+}
+
+//check user answers for true or false, save responses, deduct time if applicable
 
 // document.querySelector("#js-quiz").addEventListener("click", function() {
 
