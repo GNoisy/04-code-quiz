@@ -1,64 +1,35 @@
-var jsQuizDiv = document.querySelector("#js-quiz");
-var startBtn = document.querySelector("#start-button");
-var quesCont = document.querySelector("#questions-container");
-var timer =document.querySelector("#timer-count");
+// var jsQuizDiv = document.querySelector("#js-quiz");
+// var startBtn = document.querySelector("#start-button");
+// var quesCont = document.querySelector("#questions-container");
+// var timer =document.querySelector("#timer-count");
 //present user start button if they want to start quiz
 
-//create list of questions for the user to answer
-// if (userQuestions[0].choices.b === userQuestions[0].answer) {
-//     //run this code
-// }
 
-var userQuestions = [
+var questions = [
     {
-        question: "JavaScript currently has this many number of variable declarations?",
-        choices: {
-            a: "One",
-            b: "Two",
-            c: "Three",
-            d: "four",
-        },
-        answer: "Two",
+        question: "A JavaScript Boolean represents one of how many values:?",
+        choices: ["one", "two", "three", "four"],
+        correctAnswer: 1
     },
     {
         question: "If you put two commas in a row in an array literal, the value will eaqual what?",
-        choices: {
-            a: "True",
-            b: "NaN",
-            c: "Null",
-            d: "Undefined",
-        },
-        answer: "Null", 
+        choices: ["true", "NaN", "null", "undefined"],
+        correctAnswer: 2 
     },
     {
         question: "A for loop repeats until a specific condition evaluates to what?",
-        choices: {
-            a: "True",
-            b: "False",
-            c: "Undefined",
-            d: "Return",
-        },
-        answer: "True",
+        choices: ["true", "false", "undefined", "return"],
+        correctAnswer: 0
     },
     {
         question: "A string is enclosed what type of punctuation?",
-        choices: {
-            a: "Period",
-            b: "Quotation-mark",
-            c: "Brackets",
-            d: "Semicolon",
-        },
-        answer: "Quotation-mark",
+        choices: ["period", "quotation-mark", "brackets", "semicolon"],
+        correctAnswer: 1
     },
     {
         question: "The Modulus arithmetic operator is written with which symbol?",
-        choices: {
-            a: "/",
-            b: "*",
-            c: "%",
-            d: "()",
-        },
-        answer: "%",
+        choices: ["/", "*", "%", "()"],
+        answer: 2
     },
 
 ];
