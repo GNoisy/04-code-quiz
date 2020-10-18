@@ -15,66 +15,41 @@
          
         <nav class="navigation">
 
-            <h4 class="high-score">View Highscores</h4>
+            <p class="score">Score: </p>
         
-            <!--This is the timer for quiz-->
-            <h4>Time: <span id="timer-count">0</span></h4>
+            <p>Time: <span id="timer"></span></p>
             
         </nav>
         
         
         <div class="content">
 
-            <!--First page users sees to indicate there's a quiz available to play-->
             <div id="js-quiz">
               <h2>JS Coding Quiz Challenge</h2>
               <p>Take this timed coding quiz to test your Javascript knowledge. Wrong answers will deduct ten seconds from the timer!</p>
 
-              <!--start button to play quiz game-->
-              <button id="start-button">Start Quiz</button>
+              <button id="start">Start Quiz</button>
             </div>
 
-            <div id="question"></div>
-            <div id="answers"></div>
+            <div id="quiz-container" class="hidden">
+                <div id="question"></div>
+                <div id="answers"></div>
+                <p id="feedback"></p>
+            </div>
+            
+            <div id="hi-score-container" class="hidden">
+                <ol id="hi-scores"></ol>
+            </div>
+            
         
         </div>
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-        <script src="/assets/script.js"></script>
+        <script src="assets/script.js"></script>
     </body>
 </html>
