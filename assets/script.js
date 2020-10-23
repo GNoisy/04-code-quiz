@@ -1,11 +1,10 @@
-// var jsQuizDiv = document.querySelector("#js-quiz");
-// var startBtn = document.querySelector("#start-button");
-// var quesCont = document.querySelector("#questions-container");
-// var timer =document.querySelector("#timer-count");
-//present user start button if they want to start quiz
 var timer = 60;
 var score = 0;
+var currentScore = document.querySelector("#current-score");
 var scores = [];
+var hiScoresEl = document.getElementById("hi-scores");
+var currentQuestion = 0;
+var startTimer;
 
 var questions = [
   {
@@ -33,15 +32,12 @@ var questions = [
   {
     question: "The Modulus arithmetic operator is written with which symbol?",
     choices: ["/", "*", "%", "()"],
-    answer: 2,
+    correctAnswer: 2,
   },
 ];
 
-var currentQuestion = 0;
-var startTimer;
-
 function createTimer() {
-    startTimer = setInterval(function () {
+  startTimer = setInterval(function () {
     document.getElementById("timer").innerHTML = timer--;
     // display the updated timer on the screen
     if (timer === 0) {
@@ -54,15 +50,14 @@ function createTimer() {
   }, 1000);
 }
 
-function stopTimer(){
-  clearInterval(startTimer)
+function stopTimer() {
+  clearInterval(startTimer);
 }
 
 function displayQuestion() {
   document.getElementById("question").innerHTML = "";
   document.getElementById("answers").innerHTML = "";
-  document.getElementById("question").innerHTML =
-    questions[currentQuestion].question;
+  document.getElementById("question").innerHTML = questions[currentQuestion].question;
   for (var i = 0; i < questions[currentQuestion].choices.length; i++) {
     const button = document.createElement("button");
     button.innerHTML = questions[currentQuestion].choices[i];
@@ -75,9 +70,11 @@ function displayQuestion() {
         questions[currentQuestion].correctAnswer
       ) {
         document.getElementById("feedback").innerHTML = "Incorrect!";
-        timer -= 3;
+        timer -= 10;
       } else {
         document.getElementById("feedback").innerHTML = "Correct!";
+        score += 5;
+        currentScore.textContent = score;
       }
       if (currentQuestion === questions.length - 1) {
         // finish the quiz
@@ -97,8 +94,17 @@ function displayQuestion() {
   }
 }
 
+function showScores() {
+  hiScoresEl.innerHTML = "";
+  for (var i = 0; i < scores.length; i++) {
+    let li = document.createElement("li");
+    li.innerHTML = `player: ${scores[i].init}, score: ${scores[i].score}`;
+    hiScoresEl.appendChild(li);
+  }
+  document.getElementById("hi-score-container").classList.remove("hidden");
+}
+
 function endQuiz() {
-  var hiScoresEl = document.getElementById("hi-scores");
   // clears the screen
   // ask for the user\'s initials
   stopTimer();
@@ -106,33 +112,36 @@ function endQuiz() {
   // add initials and scores to the scores array
   scores.push({
     init: initials,
-    time: timer,
+    score: score,
   });
-  scores.sort(function (a, b) {
-    return b.time - a.time;
-  });
+  // scores.sort(function (a, b) {
+  //   return b.time - a.time;
+  // });
   // save their initials and their score in localStorage
   localStorage.setItem("scores", JSON.stringify(scores));
   // use a for loop to display the scores on the screen
-  hiScoresEl.innerHTML = "";
-  for (var i = 0; i < scores.length; i++) {
-    let li = document.createElement("li");
-    li.innerHTML = `player: ${scores[i].init}, score: ${scores[i].time}`;
-    hiScoresEl.appendChild(li);
-  }
-  document.getElementById("hi-score-container").classList.remove("hidden");
+  showScores();
 }
 
 function loadScores() {
   scores = JSON.parse(localStorage.getItem("scores")) || [];
 }
 
-document.getElementById("start").addEventListener("click", function () {
-  createTimer();
-  document.getElementById("start").style.display = "none";
-  document.getElementById("js-quiz").classList.add("hidden");
-  document.getElementById("quiz-container").classList.remove("hidden");
-  displayQuestion();
-});
+function initialize() {
+  document.querySelector("#view-score").addEventListener("click", function () {
+    showScores();
+  });
 
-loadScores();
+  document.getElementById("start").addEventListener("click", function () {
+    createTimer();
+    currentScore.textContent = score;
+    document.getElementById("start").style.display = "none";
+    document.getElementById("js-quiz").classList.add("hidden");
+    document.getElementById("quiz-container").classList.remove("hidden");
+    document.getElementById("hi-score-container").classList.add("hidden");
+    displayQuestion();
+  });
+  loadScores();
+}
+
+initialize();
